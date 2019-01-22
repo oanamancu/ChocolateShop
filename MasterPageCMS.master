@@ -1,0 +1,81 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageCMS.master.cs" Inherits="MasterPageCMS" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Chocolate Shop</title>
+    <link rel="icon" href="~/Images/pralines7.jpg" />
+   <div id="Div1" runat="server">
+   <script type="text/javascript" src="<%=Page.ResolveUrl("~/JavaScript/jquery-1.3.2.min.js") %>"></script>
+    <script type="text/javascript">
+        function mainmenu() {
+            $(" #nav ul ").css({ display: "none" }); // Opera Fix
+
+            $(" #nav li").hover(function () {
+                $(this).find('ul:first').css({ visibility: "visible", display: "none" }).show(400);
+            }
+            , function () {
+                $(this).find('ul:first').css({ visibility: "hidden" });
+            });
+        }
+
+        $(document).ready(function () {
+            mainmenu();
+        });
+    </script>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="~/Styles/StyleSheet.css" />
+    
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+           <div id="banner">
+           </div>
+
+           <div id="navigation">
+              <ul id="nav">
+                 <li><a href="<%=Page.ResolveUrl("~/Pages/Home.aspx") %>">Home</a></li>
+                 <li><a href="<%=Page.ResolveUrl("~/Pages/AllProducts.aspx") %>">Shop</a>
+                    <ul>
+                       <li><a href="<%=Page.ResolveUrl("~/Pages/Tablets.aspx") %>">Tablets</a></li>
+                       <li><a href="<%=Page.ResolveUrl("~/Pages/Pralines.aspx") %>">Pralines</a></li>
+                       <li><a href="<%=Page.ResolveUrl("~/Pages/SeasonalChocolate.aspx") %>">Seasonal</a></li>
+                       <li><a href="<%=Page.ResolveUrl("~/Pages/GiftBoxes.aspx") %>">Gift Boxes</a></li>
+                    </ul>
+                 </li>
+                <li><a href="#">Management</a>
+                    <ul>
+                      <li><a id="A1" href="<%=Page.ResolveUrl("~/Pages/ChocolateManagement.aspx") %>" >Manage Chocolate Products</a> </li> 
+                      <li><a id="A2" href="<%=Page.ResolveUrl("~/Pages/Admins.aspx") %>" >Manage Admins</a> </li> 
+                      <li><a id="A3" href="<%=Page.ResolveUrl("~/Pages/Orders.aspx") %>" >Orders</a> </li> 
+                    </ul> 
+                 </li>   
+              </ul>
+             <div id="Login" align="right" style="margin-right: 20px";>
+                <asp:Label ID="lblLogin" runat="server" ForeColor="White" Text=""></asp:Label><br />
+                <asp:LinkButton ID="btnHistory" style="padding-right: 20px;" runat="server" ForeColor="White" 
+                      onclick="btnHistory_Click"> History</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton2" style="padding-right: 20px;" runat="server" ForeColor="White" 
+                     onclick="LinkButton2_Click">Basket</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton1" ForeColor="White" runat="server" 
+                     OnClick="LinkButton1_Click" CausesValidation="False">LinkButton</asp:LinkButton>
+             </div>
+
+           </div>
+
+           <div id="content_area">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+           </div>
+
+           <div id="footer">
+               <p>Project made by Oana Mancu: This project is made for educational purposes and it's not a real webshop!</p>
+           </div>
+
+        </div>
+    </form>
+</body>
+</html>
